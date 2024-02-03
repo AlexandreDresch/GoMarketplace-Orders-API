@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './products/entities/product.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -15,7 +17,7 @@ import { Product } from './products/entities/product.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [Product],
-      synchronize: true,
+      synchronize: false,
       logging: true,
     }),
     ProductsModule,
