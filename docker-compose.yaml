@@ -10,6 +10,6 @@ services:
       POSTGRES_HOST: ${DB_HOST}
       POSTGRES_PORT: ${DB_PORT}
     ports:
-      - 5433:5433
+      - 5433:5432
     volumes:
       - .data/postgres:/var/lib/postgresql/data
